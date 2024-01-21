@@ -1,6 +1,6 @@
 #!/bin/bash
 
-basepath=/opt/script/nwfl
+basepath=/opt/scripts/nwfl
 domain=$(hostname -d)
 date_now=$(date "+%d %b %Y %H:%M")
 
@@ -25,7 +25,7 @@ while true; do
             email_content=$(cat <<EOF
 Subject: Failed login
 From: admin@$domain
-To: ithaldin@myhaldin.com
+To: mail@myhaldin.com
 
 Login: $login
 IP: $ip_address
@@ -35,7 +35,7 @@ EOF
             )
 
             # Send the email
-            echo -e "$email_content" | /opt/zimbra/common/sbin/sendmail -f admin@$domain ithaldin@myhaldin.com
+            echo -e "$email_content" | /opt/zimbra/common/sbin/sendmail -f admin@$domain mail@mail.com
 
             # Debugging: Print a message after the email is sent
             echo "Debug: Email sent - $(date)"
